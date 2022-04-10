@@ -7,8 +7,13 @@ public class DrawingBook {
 
         if (p <= n/2){
             System.out.println("[정순] 횟수 : " + p/2);
+            // 2 3 ...1  // 4 5 ...2
         }else{
             System.out.println("[역순] 횟수 : " + (n/2 - p/2));
+            // 6 7 ...0 // 4 5 ...1
+            //  3             2
+            // 3 - 3          3 - 2
+            // n/2 - p/2
         }
     }
 }
