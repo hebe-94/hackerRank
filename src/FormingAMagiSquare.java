@@ -36,7 +36,6 @@ public class FormingAMagiSquare {
             }
         }
 
-
 //        for (int i = 0; i<checkData.size(); i++){
 //            result += Math.abs(checkData.get(i) - overlapData.get(i));
 //        }
