@@ -6,6 +6,13 @@ import java.util.List;
 
 public class FormingAMagicSquareVer1 {
     public static void main(String[] args) {
+        /*
+            ver1
+            고정된 하나의 마방진으로 바꾼다
+            들어가는 비용이 얼마나 들어가는지는 신경쓰지 않는다.
+
+         */
+        // 함수에서 들어온 매개변수 만들기
         List<Integer> i1 = new ArrayList<>(Arrays.asList(4,9,2));
         List<Integer> i2 = new ArrayList<>(Arrays.asList(3,5,7));
         List<Integer> i3 = new ArrayList<>(Arrays.asList(8,1,5));
@@ -13,12 +20,29 @@ public class FormingAMagicSquareVer1 {
         s.add(i1);
         s.add(i2);
         s.add(i3);
-        if(s.get(1).get(1) != 5){
-            s.get(1).set(1, 5);
-            System.out.println("중앙 바뀜");
+
+
+        // 문제 풀이 시작!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        List<Integer> sol1 = new ArrayList<>(Arrays.asList(6,1,8));
+        List<Integer> sol2 = new ArrayList<>(Arrays.asList(7,5,3));
+        List<Integer> sol3 = new ArrayList<>(Arrays.asList(2,9,4));
+        List<List<Integer>> sol = new ArrayList<>();
+        sol.add(sol1);
+        sol.add(sol2);
+        sol.add(sol3);
+
+        int result = 0;
+        for(int i = 0; i<sol.size(); i++){
+            for(int j = 0; j <sol.get(i).size(); j++){
+                result += Math.abs(sol.get(i).get(j) - s.get(i).get(j));
+            }
         }
+        System.out.println(result);
+        System.out.println();
+
+
+        // 데이터 진행 건들지 않아도 된다.!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
         int[] arCheckNum = new int[10];
-        int result =0;
         for(int i = 0; i<s.size(); i++){
             for(int j = 0; j <s.get(i).size(); j++){
                 arCheckNum[s.get(i).get(j)] += 1;
