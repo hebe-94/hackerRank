@@ -1,30 +1,48 @@
-import java.util.Arrays;
-
 public class ElectronicsShop {
     public static void main(String[] args) {
         int[] keyboards = {3,1};
         int[] drives = {5,2,8};
         int b =10;
-        Arrays.sort(keyboards);
-        Arrays.sort(drives);
 
-        int result = 0;
-        int keyboardsIndex = keyboards.length-1;
-        int drivesIndex = drives.length-1;
-
-        if( b < keyboards[0] + drives[0]){
-            result = -1;
-        }
-
-        int price = keyboards[keyboardsIndex] + drives[drivesIndex];
-
-        while(result != -1){
-            if(price > b){
-                int keyboardDownPrice = keyboards[keyboardsIndex - 1]
+        int max = 0;
+        int sum = 0;
+        for(int i = 0; i < keyboards.length; i++){
+            for(int j = 0; j < drives.length; j++){
+                sum = keyboards[i] + drives[j];
+                if(sum > max && sum <= b){
+                    max = sum;
+                }
             }
-
+        }
+        if(max > b){
+            max = -1;
         }
 
-        System.out.println(result);
+        System.out.println(max);
+
+
+
+
+//        while(result != -1){
+//            if(keyboardsIndex != 0){
+//                keyboardsIndex--;
+//                price = keyboards[keyboardsIndex]+ drives[drivesIndex];
+//            }
+//
+//            if(price < b){
+//                result = price;
+//                break;
+//            }
+//
+//            if(drivesIndex != 0){
+//                drivesIndex--;
+//                price = keyboards[keyboardsIndex]+ drives[drivesIndex];
+//            }
+//
+//            if(price < b){
+//                result = price;
+//                break;
+//            }
+//        }
     }
 }
