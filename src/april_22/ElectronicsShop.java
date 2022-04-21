@@ -1,3 +1,5 @@
+package april_22;
+
 public class ElectronicsShop {
     public static void main(String[] args) {
         int[] keyboards = {3,1};

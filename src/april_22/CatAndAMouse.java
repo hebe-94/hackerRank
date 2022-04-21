@@ -1,3 +1,5 @@
+package april_22;
+
 public class CatAndAMouse {
     public static void main(String[] args) {
         // 고양이 2마리와 쥐의 거리를 확인하고 가까운 애가 잡는것

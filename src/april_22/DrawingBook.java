@@ -1,3 +1,5 @@
+package april_22;
+
 public class DrawingBook {
     public static void main(String[] args) {
         // 길이의 반을 쪼개서

@@ -1,4 +1,4 @@
-package formingAMagicSquare;
+package april_22.formingAMagicSquare;
 
 import java.util.ArrayList;
 import java.util.Arrays;
