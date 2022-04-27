@@ -9,7 +9,9 @@ public class AngryProfessor {
     public static void main(String[] args) {
         // 수업 취소 : YES, 수업 진행 : NO
         int k = 2;
-        ArrayList<Integer> a = new ArrayList<>(Arrays.asList(0,-1,2,1));
+        ArrayList<Integer> a = new ArrayList<>(Arrays.asList(0, -1, 2, 1));
+
+        
         String resultMsg = "YES";
         int stuCNT = 0;
         Collections.sort(a);
