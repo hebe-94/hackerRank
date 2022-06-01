@@ -1,9 +1,6 @@
 package may_22;
 
-import java.sql.Array;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 public class QueensAttack {
     public static void main(String[] args) {
@@ -12,88 +9,153 @@ public class QueensAttack {
         int r_q = 4; // 퀸의 가로, x
         int c_q = 3; // 퀸의 세로, y (r, c)
 
+//        int n = 4; // 체스판 넓이
+//        int k = 0; // 장애물 수
+//        int r_q = 4; // 퀸의 가로, x
+//        int c_q = 4; // 퀸의 세로, y (r, c)
+
         List<List<Integer>> obstacles = new ArrayList<>();
         obstacles.add(Arrays.asList(5,5));
-        obstacles.add(Arrays.asList(4,3));
-        obstacles.add(Arrays.asList(3,3));
+        obstacles.add(Arrays.asList(4,2));
+        obstacles.add(Arrays.asList(2,3));
 
-        List<List<Integer>> chess = new ArrayList<>();
-        for(int i = 0; i< n; i++){
-            chess.add(new ArrayList<>());
-            for(int j = 0; j< n; j++){
-                    chess.get(i).add(0);
-            }
+//        List<List<Integer>> chess = new ArrayList<>();
+//        for(int i = 0; i< n; i++){
+//            chess.add(new ArrayList<>());
+//            for(int j = 0; j< n; j++){
+//                    chess.get(i).add(0);
+//            }
+//        }
+
+//        chess.get(r_q-1).set(c_q-1,1);  // 3 2
+//        chess.get(4).set(4,2);
+//        chess.get(3).set(1,2);
+//        chess.get(1).set(2,2);
+//        System.out.println("처음");
+//        for(int ii = chess.size()-1; ii >= 0; ii--){
+//            System.out.println(chess.get(ii));
+//        }
+        System.out.println();
+        System.out.println();
+
+//        for(int i = obstacles.size()-1; i >= 0; i--){
+//            System.out.println(obstacles.get(i));
+//        }
+
+
+//        obstacles.add(Arrays.asList(5,5)); 4 4
+//        obstacles.add(Arrays.asList(4,2)); 3 1
+//        obstacles.add(Arrays.asList(2,3)); 1 2
+        //////////////////////////////////////////////////////////////////////
+//        int[][] moveArr = {
+//                {0, 1}, {1, 1},
+//                {1, 0}, {1, -1},
+//                {0, -1}, {-1,-1},
+//                {-1, 0}, {-1, 1}
+//        };
+//        r_q--; c_q--;
+//        if(n == 1) System.out.println("0");
+//        int result = 0;
+//        for(int i = 0; i < 8; i++){
+//            int c = c_q;
+//            int r = r_q;
+//            boolean flag = false;
+//            while(!(r + moveArr[i][0] >= n || c + moveArr[i][1] >= n ||
+//                    r + moveArr[i][0] < 0 || c + moveArr[i][1] < 0 || flag)){ // 한방향 끝까지
+//
+//                    r += moveArr[i][0];
+//                    c += moveArr[i][1];
+//                    for (int i1 = 0; i1 < k; i1++){
+//                        if(obstacles.size() != 0 && r == obstacles.get(i1).get(0)-1 && c == obstacles.get(i1).get(1)-1){
+//                            System.out.println("0000000000");
+//                            flag = true;
+//                            break;
+//                        }
+//                    }
+//                    if(flag) break;
+//                    result++;
+//                    System.out.println("r :" + r);
+//                    System.out.println("c :" + c);
+//                    chess.get(r).set(c,3);
+////                    try {
+//////                        Thread.sleep(1500);
+////                    }catch (Exception e){
+////
+////                    }
+//                    System.out.println();
+//                    for(int ii = chess.size()-1; ii >= 0; ii--){
+//                        System.out.println(chess.get(ii));
+//                    }
+//                    System.out.println();
+//
+//
+//            }
+//        }
+//
+//        System.out.println(result);
+
+
+
+
+
+//        int[][] moveArr = {
+//                {0, 1}, {1, 1},
+//                {1, 0}, {1, -1},
+//                {0, -1}, {-1,-1},
+//                {-1, 0}, {-1, 1}
+//        };
+//        System.out.println();
+//        int result = 0;
+//        for(int i = 0; i < 8; i++){
+//            boolean flag = false;
+//            int r = r_q + moveArr[i][0] -1;
+//            int c = c_q + moveArr[i][1] -1;
+//            while(r < n && c < n && r >= 0 && c >= 0){
+//                for (int i1 = 0; i1 < obstacles.size(); i1++){
+//                    if(r == obstacles.get(i1).get(0)-1 && c == obstacles.get(i1).get(1)-1){
+//                        obstacles.remove(i1);
+//                        flag = true;
+//                        break;
+//                    }
+//                }
+//                if(flag) break;
+//                r += moveArr[i][0];
+//                c += moveArr[i][1];
+//                result++;
+//            }
+//        }
+//        System.out.println(result);
+        Map<String, String> obstacleMap= new HashMap<>();
+        for(int i=0; i<k; i++) {
+            obstacleMap.put((obstacles.get(i).get(0)-1) + "-" + (obstacles.get(i).get(1)-1), "obstacle");
         }
 
-
-
-            // 현재 위치에서 i,0  i,1을 x와 y에 더하기
-            // r_q + i,0   c_q + i,1 반복
-            // 반복 조건은 둘중 하나가 n과 같거나 크고, 그 값이 1일때 반복문 넘어가기
-            // 0,0 0,1
-            // 1,0 1,1
-            // 2,0 2,1
-            // 3,0 3,1
-            // queen의 현재 위치에서 그 값을 계속 더하고 장애물이나 범위가 넘기전까지
-
-        int[][] moveArr = { // 상하, 좌우
+        int[][] moveArr = {
                 {0, 1}, {1, 1},
                 {1, 0}, {1, -1},
                 {0, -1}, {-1,-1},
                 {-1, 0}, {-1, 1}
         };
-        r_q--; c_q--;
-        obstacles.get(r_q).set(c_q,1);
-
-
-//        for(int i = obstacles.size()-1; i >= 0; i--){
-//            System.out.println(obstacles.get(i));
-//        }
-        if(n == 1) System.out.println("0");
         int result = 0;
+        int r = r_q--;
+        int c = c_q--;
         for(int i = 0; i < 8; i++){
-            int c = c_q;
-            int r = r_q;
-            int j = 0;
-            while(!(r + moveArr[i][0] >= n || c + moveArr[i][1] >= n ||
-                    r + moveArr[i][0] < 0 || c + moveArr[i][1] < 0)){
-                if(r != obstacles.get(j).get(0) && c != obstacles.get(j).get(1)){
-                    result++;
-                    r += moveArr[i][0];
-                    c += moveArr[i][1];
-                    System.out.println("r :" + r);
-                    System.out.println("c :" + c);
-                    obstacles.get(r).set(c,3);
-                    try {
-//                        Thread.sleep(1500);
-                    }catch (Exception e){
-
-                    }
-                    System.out.println();
-                    for(int ii = obstacles.size()-1; ii >= 0; ii--){
-                        System.out.println(obstacles.get(ii));
-                    }
-                    System.out.println();
+            while(true){
+                r = r + moveArr[i][0];
+                c = c + moveArr[i][1];
+                System.out.println("loc : " +r + ", " + c);
+                if(r >= n || c >= n || r < 0 || c < 0){
+                    break;
                 }
-
+                String key = r + "-" + c;
+                System.out.print("key : ");
+                System.out.println(key);
+                if(obstacleMap.containsKey(key)){
+                    break;
+                }
+                result++;
             }
         }
-
         System.out.println(result);
-
-
-
-
-
-        // 0,1
-        // 1,1
-        // 1,0
-        // 1,-1
-        // 0, -1
-        // -1,-1
-        // -1,0
-        // -1,1
-
-
     }
 }
