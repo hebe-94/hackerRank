@@ -19,22 +19,22 @@ public class QueensAttack {
         obstacles.add(Arrays.asList(4,2));
         obstacles.add(Arrays.asList(2,3));
 
-//        List<List<Integer>> chess = new ArrayList<>();
-//        for(int i = 0; i< n; i++){
-//            chess.add(new ArrayList<>());
-//            for(int j = 0; j< n; j++){
-//                    chess.get(i).add(0);
-//            }
-//        }
+        List<List<Integer>> chess = new ArrayList<>();
+        for(int i = 0; i< n; i++){
+            chess.add(new ArrayList<>());
+            for(int j = 0; j< n; j++){
+                    chess.get(i).add(0);
+            }
+        }
 
-//        chess.get(r_q-1).set(c_q-1,1);  // 3 2
-//        chess.get(4).set(4,2);
-//        chess.get(3).set(1,2);
-//        chess.get(1).set(2,2);
-//        System.out.println("처음");
-//        for(int ii = chess.size()-1; ii >= 0; ii--){
-//            System.out.println(chess.get(ii));
-//        }
+        chess.get(r_q-1).set(c_q-1,1);  // 3 2
+        chess.get(4).set(4,2);
+        chess.get(3).set(1,2);
+        chess.get(1).set(2,2);
+        System.out.println("처음");
+        for(int ii = chess.size()-1; ii >= 0; ii--){
+            System.out.println(chess.get(ii));
+        }
         System.out.println();
         System.out.println();
 
@@ -105,30 +105,39 @@ public class QueensAttack {
 //                {-1, 0}, {-1, 1}
 //        };
 //        System.out.println();
+//        Map<String, String> obstacleMap= new HashMap<>();
+//        for(int i=0; i<k; i++) {
+//            obstacleMap.put((obstacles.get(i).get(0)-1) + "-" + (obstacles.get(i).get(1)-1), "obstacle");
+//        }
 //        int result = 0;
+//
 //        for(int i = 0; i < 8; i++){
 //            boolean flag = false;
 //            int r = r_q + moveArr[i][0] -1;
 //            int c = c_q + moveArr[i][1] -1;
 //            while(r < n && c < n && r >= 0 && c >= 0){
 //                for (int i1 = 0; i1 < obstacles.size(); i1++){
-//                    if(r == obstacles.get(i1).get(0)-1 && c == obstacles.get(i1).get(1)-1){
-//                        obstacles.remove(i1);
+//                    String key = r + "-" + c;
+//                    if(obstacleMap.containsKey(key)){
+//                        System.out.print("key : ");
+//                        System.out.println(key);
 //                        flag = true;
 //                        break;
 //                    }
 //                }
 //                if(flag) break;
+//                chess.get(r).set(c,3);
+//                for(int ii = chess.size()-1; ii >= 0; ii--){
+//                        System.out.println(chess.get(ii));
+//                }
+//                System.out.println();
 //                r += moveArr[i][0];
 //                c += moveArr[i][1];
 //                result++;
 //            }
 //        }
 //        System.out.println(result);
-        Map<String, String> obstacleMap= new HashMap<>();
-        for(int i=0; i<k; i++) {
-            obstacleMap.put((obstacles.get(i).get(0)-1) + "-" + (obstacles.get(i).get(1)-1), "obstacle");
-        }
+
 
         int[][] moveArr = {
                 {0, 1}, {1, 1},
@@ -136,19 +145,27 @@ public class QueensAttack {
                 {0, -1}, {-1,-1},
                 {-1, 0}, {-1, 1}
         };
+        Map<String, String> obstacleMap= new HashMap<>();
+        for(int i=0; i<k; i++) {
+            obstacleMap.put((obstacles.get(i).get(0)-1) + "-" + (obstacles.get(i).get(1)-1), "obstacle");
+        }
+        System.out.println(obstacleMap);
+
         int result = 0;
-        int r = r_q--;
-        int c = c_q--;
+
         for(int i = 0; i < 8; i++){
+            int r = r_q -1;
+            int c = c_q -1;
+
             while(true){
                 r = r + moveArr[i][0];
                 c = c + moveArr[i][1];
-                System.out.println("loc : " +r + ", " + c);
+
                 if(r >= n || c >= n || r < 0 || c < 0){
                     break;
                 }
+
                 String key = r + "-" + c;
-                System.out.print("key : ");
                 System.out.println(key);
                 if(obstacleMap.containsKey(key)){
                     break;
@@ -157,5 +174,6 @@ public class QueensAttack {
             }
         }
         System.out.println(result);
+
     }
 }
