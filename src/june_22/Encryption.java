@@ -60,12 +60,22 @@ public class Encryption {
 //
 //        System.out.println(result);
 
+        // have a nice day (12) 3,3 / 3,4 / 4,4 단, row가 col보다 작거나 같아야함
+        // 3 row, 4col
+        // have
+        // anic
+        // eday
+
+        // 각 행의 특정 열을 골라내기, 골라낸 후에는 띄어쓰기
+        // hae and via ecy
+
         String result = "";
         s = s.replace(" ", "");
         double strLenth = s.length();
         double strLenthFloor = Math.floor(Math.sqrt(strLenth)),strLenthCeil = Math.ceil(Math.sqrt(strLenth));
         double[] floorAr = {strLenthFloor,strLenthFloor,strLenthCeil, strLenthCeil};
         double[] ceilAr = {strLenthFloor,strLenthCeil,strLenthFloor, strLenthCeil};
+        // floor, ceil 구하기
         double min = strLenth;
         int index = -1;
         for (int i = 0; i < floorAr.length; i++){
@@ -78,9 +88,11 @@ public class Encryption {
         }
         strLenthCeil = ceilAr[index];
         strLenthFloor = floorAr[index];
+        // 최소의 floor ceil 구하기
         for(double i = strLenth; i % strLenthCeil != 0; i++){
             s += " ";
         }
+        // 배열 인덱스 문제를 사전에 방지하기 위해 띄어쓰기 추가
 
         for(double i = 0.0; i < strLenthCeil; i++){
             for (double j = 0.0; j < strLenthFloor; j ++){
@@ -90,10 +102,12 @@ public class Encryption {
             }
             result += " ";
         }
+        // 배열을 인덱스를 위한 띄어쓰기를 제외하고 각 배열에 맞게 result에 담기
 
 
+        System.out.println(result);
 
-
+        // 아 나는 또 올린다
 
 
 
