@@ -12,24 +12,49 @@ public class threeDSurfaceArea {
         A.add(new ArrayList<>(Arrays.asList(2,2,3)));
         A.add(new ArrayList<>(Arrays.asList(1,2,4)));
 
+//        int row = A.size();
+//        int col = A.get(0).size();
+//        // 윗면 아래면
+//        int result = 2*row*col;
+//
+//
+//        for(int i=0;i<row;i++){
+//            result+=A.get(i).get(0)+A.get(i).get(col-1);
+//            for(int j=0;j<col-1;j++)
+//                result+=Math.abs(A.get(i).get(j)-A.get(i).get(j+1));
+//        }
+//        for(int j=0;j<col;j++){
+//            result+=A.get(0).get(j)+A.get(row-1).get(j);
+//            for(int i=0;i<row-1;i++)
+//                result+=Math.abs(A.get(i).get(j)-A.get(i+1).get(j));
+//        }
+//        System.out.println(result);
+
+
+
+        // 가로
         int row = A.size();
         int col = A.get(0).size();
-        // 윗면 아래면
-        int result = 2*row*col;
 
+        int result = 2 * row * col;
 
-        for(int i=0;i<row;i++){
-            result+=A.get(i).get(0)+A.get(i).get(col-1);
-            for(int j=0;j<col-1;j++)
-                result+=Math.abs(A.get(i).get(j)-A.get(i).get(j+1));
+        // row scan
+        for(int i = 0; i<row; i++){
+            result  += A.get(i).get(0) + A.get(i).get(col-1);
+            for(int j = 0; j < col-1; j++){
+                result += Math.abs(A.get(i).get(j) - A.get(i).get(j+1));
+            }
         }
-        for(int j=0;j<col;j++){
-            result+=A.get(0).get(j)+A.get(row-1).get(j);
-            for(int i=0;i<row-1;i++)
-                result+=Math.abs(A.get(i).get(j)-A.get(i+1).get(j));
+
+        // col scan
+        for(int i = 0; i<col; i++){
+            result  += A.get(0).get(i) + A.get(row-1).get(i);
+            for(int j = 0; j < row-1; j++){
+                result += Math.abs(A.get(j).get(i) - A.get(j+1).get(i));
+            }
         }
+
         System.out.println(result);
-        // 가로
         // 1. 0이 아니면 그 값 더하기 2
         // 2. 다음 인덱스와의 차이를 절대값으로 더한다
 
